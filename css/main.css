@@ -1,0 +1,143 @@
+:root {
+    font-size: 16px;
+}
+
+/* Body style */
+body {
+    margin: 0%;
+    padding: 0%;
+
+}
+
+p{
+    margin: 0%;
+    padding: 0%;
+}
+
+/* Main style */
+main {
+    overflow-y: auto;
+    background-color: #B9B0AD;
+    min-height: 100vh;
+}
+
+/* Header */
+
+header .identity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+    padding: 1.5rem;
+}
+
+header .identity img {
+    width: 5rem;
+    margin: 0 1rem 0 0;
+}
+
+header .identity h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Content */
+
+.content {
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+.content h3 {
+    background-color: #E33F13;
+    color: #ffffff;
+    padding: 2% 2%;
+}
+
+/* Adding, lists of songs here */
+
+.add-section,
+.display-section {
+    width: 35rem;
+    padding: 1rem;
+
+}
+
+/* Form styles */
+
+.style-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+
+}
+
+form .field label {
+    display: flex;
+}
+
+form .field input {
+    display: flex;
+    margin: .5rem 0;
+    height: 2rem;
+}
+
+form input {
+    margin: .5rem 0;
+    height: 2rem;
+}
+
+.songs{
+    height: 45px;
+    width: 300px;
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+#errorMsgTitle, #errorMsg{
+    margin: 1rem 0rem;
+    display: block;
+}
+
+
+#addbtn {
+    width: 10rem;
+    display: block;
+    margin: 1.5rem 0 0.2rem 3.5rem;
+    text-align: center;
+    font-size: 18px;
+    color: #ffffff;
+    border-radius: 5px;
+    background-color: #E33F13;
+
+}
+
+@media screen and (max-width: 600px) {
+
+    :root{
+        font-size: 20px;
+    }
+
+    header .identity {
+        height: 2.5rem;
+    }
+
+    .style-form {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    main {
+        overflow-y: auto;
+        background-color: #B9B0AD;
+        min-height: 100vh;
+    }
+    p{
+        margin: 2%;
+    }
+
+}
