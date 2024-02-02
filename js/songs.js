@@ -53,16 +53,16 @@ document.getElementById('addbtn').addEventListener('click', function () {
     }
 });
 
-// if ('serviceWorker' in navigator){
-//     navigator.serviceWorker.register('/service-worker.js', {scope: '/'})
-//     .then((registration) => {
-//         console.log('Registration successful', registration);
-//     })
-//     .catch((error) => {
-//         console.log('Service Worker not found');
-//     });
-// }
-// else {
-//     console.log('Service Worker not available');
-// }
+if ('serviceWorker' in navigator){
+    navigator.serviceWorker.register('/service-worker.js', {scope: '/'})
+    .then((registration) => {
+        console.log('Registration successful', registration);
+    })
+    .catch((error) => {
+        console.log('Service Worker not found');
+    });
+}
+else {
+    console.log('Service Worker not available');
+}
 
