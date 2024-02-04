@@ -34,7 +34,7 @@ document.getElementById('addbtn').addEventListener('click', function () {
 
         titleInput.value = '';
         artistInput.value = '';
-        
+
     } else {
         if (title === '') {
             errorTitle.innerHTML = 'Title is required.';
@@ -53,16 +53,40 @@ document.getElementById('addbtn').addEventListener('click', function () {
     }
 });
 
-if ('serviceWorker' in navigator){
-    navigator.serviceWorker.register('/service-worker.js', {scope: '/'})
-    .then((registration) => {
-        console.log('Registration successful', registration);
-    })
-    .catch((error) => {
-        console.log('Service Worker not found');
-    });
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
+        .then((registration) => {
+            // console.log('Registration successful', registration);
+        })
+        .catch((error) => {
+            // console.log('Service Worker not found');
+        });
 }
 else {
     console.log('Service Worker not available');
 }
 
+// // Load posts from the web
+// function loadPosts() {
+//     fetch('https://jsonplaceholder.typicode.com/users')
+//         .then(response => response.json())
+//         .then(json => renderPost(json));
+// }
+
+// window.addEventListener('load', () => {
+//     loadPosts();
+// });
+
+
+// function renderPost(posts) {
+
+//     const topPost = posts.slice(0,5);
+//     const output = document.getElementById('details');
+//     output.innerHTML = '';
+
+//     posts.forEach((post) => {
+//        output.innerHTML += `<h2>${post.name} </h2>
+//          <p>${post.email} </p> `;
+//     });
+ 
+// }
