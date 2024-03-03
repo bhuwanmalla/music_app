@@ -28,7 +28,7 @@ self.addEventListener('install', (event) => {
                 ]);
             })
             .catch((errors) => {
-                console.log('Catch failed: ', errors);
+                // console.log('Catch failed: ', errors);
             })
     )
 
@@ -41,7 +41,7 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
 
-    console.log('Service Worker activated', event);
+    // console.log('Service Worker activated', event);
 
     // Immediately get control over the open pages
     event.waitUntil(clients.claim());
@@ -63,51 +63,24 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
 
-    /**
-    * Cache Strategy: Network with cache Fallback
-    */
+    // Cache strategy using Stale while revalidate 
+    if(event.request.method == 'GET'){
+        event.respondWith(
+            caches.open(cacheName)
+                .then((cache) => {
+                    return cache.match(event.request)
+                        .then((cacheResponse) => {
+                            const fetchedResponse = fetch(event.request)
+                                .then((networkResponse) => {
+                                    cache.put(event.request, networkResponse.clone());
+                                    return networkResponse;
+                                });
+                            return cacheResponse || fetchedResponse;
+                        })
+                })
+        );
+    }
 
-    // event.respondWith(
-    //     fetch(event.request)
-    //     .catch(() => {
-    //         return caches.open(cacheName)
-    //         .then((cache) => {
-    //             return cache.match(event.request);
-    //         })
-    //     })
-    // );
-
-
-    /**
-     * Cache strategy: Cache with Network Fallback
-     */
-
-
-
-    //   event.respondWith(
-    //     caches.open(cacheName)
-    //         .then(async (cache) => {
-    //             const response = await cache.match(event.request);
-    //             return response || fetch(event.request);
-    //         })
-    // );
-
-    // Cache strategy: Stale while revalidate 
-
-    event.respondWith(
-        caches.open(cacheName)
-            .then((cache) => {
-                return cache.match(event.request)
-                    .then((cacheResponse) => {
-                        const fetchedResponse = fetch(event.request)
-                            .then((networkResponse) => {
-                                cache.put(event.request, networkResponse.clone());
-                                return networkResponse;
-                            });
-                        return cacheResponse || fetchedResponse;
-                    })
-            })
-    );
 });
 
 
